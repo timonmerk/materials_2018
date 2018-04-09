@@ -1,3 +1,5 @@
+#hallo
+import numpy as np
 import pickle
 
 def get_credentials():
@@ -39,7 +41,7 @@ def write_pwdb(pwdb):
         pickle.dump(pwdb, pwdb_file)
 
 def get_path():
-    return '/tmp/pwdb.pkl'
+    return 'pwdb.pkl'
 
 pwdb = read_pwdb()
 username, password = get_credentials()
@@ -47,4 +49,3 @@ if authenticate(username, password, pwdb):
     print(pwdb)
 else:
     print('No match!')
-
