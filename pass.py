@@ -4,12 +4,23 @@ def get_credentials():
     return username, password
 
 def authenticate(username, password, pwdb):
+    status = False
     if username in pwdb:
         if pwdb[username] == password:
-            return True
-    return False
+            status = True
+    else:
+        add_user(username, password, pwdb)
+        status = True
+    return status
 
-pwdb = {'tiziano': 'right_password'}
+def add_user(username, password, pwdb):
+    if username not in pwdb:
+        pwdb[username] = password
+    else:
+        print('User already known!')
+
+pwdb = {}
+
 username, password = get_credentials()
 if authenticate(username, password, pwdb):
     print('Match!')
