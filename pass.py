@@ -11,8 +11,10 @@ def authenticate(username, password, pwdb):
         if pwdb[username] == password:
             status = True
     else:
-        add_user(username, password, pwdb)
-        status = True
+        ans = input('User not known. Add it to db? [y/n]')
+        if ans == 'y':
+            add_user(username, password, pwdb)
+            status = True
     return status
 
 def add_user(username, password, pwdb):
