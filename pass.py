@@ -42,7 +42,7 @@ def get_path():
 pwdb = read_pwdb()
 username, password = get_credentials()
 if authenticate(username, password, pwdb):
-    print('Match!')
+    print(pwdb)
 else:
     print('No match!')
 
