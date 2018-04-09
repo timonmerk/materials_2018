@@ -43,6 +43,9 @@ def write_pwdb(pwdb):
 def get_path():
     return 'pwdb.pkl'
 
+def test_fct():
+    print('test')
+
 def get_hash(password): #entered password includes salt
     numerator = 1
     res = 0
