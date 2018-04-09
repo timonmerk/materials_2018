@@ -10,7 +10,7 @@ CHARS = string.ascii_letters + string.digits + string.punctuation
 
 def get_credentials():
     '''Prompt the user for a username and password, then
-    return the username (string) and password (string) in a tuple xD'''
+    return the username (string) and password (string) in a tuple'''
 
     username = input('Enter your username: ')
     password = getpass.getpass('Enter your password: ')
