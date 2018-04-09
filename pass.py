@@ -1,3 +1,5 @@
+import pickle
+
 def get_credentials():
     username = input('Please type your user name: ')
     password = input('Please type your password: ')
@@ -16,11 +18,28 @@ def authenticate(username, password, pwdb):
 def add_user(username, password, pwdb):
     if username not in pwdb:
         pwdb[username] = password
+        write_pwdb(pwdb)
     else:
         print('User already known!')
 
-pwdb = {}
+def read_pwdb():
+    pwdb_path = get_path()
+    try:
+        with open(pwdb_path, 'rb') as pwdb_file:
+            pwdb = pickle.load(pwdb_file)
+    except FileNotFoundError:
+        pwdb = {}
+    return pwdb
 
+def write_pwdb(pwdb):
+    pwdb_path = get_path()
+    with open(pwdb_path, 'wb') as pwdb_file:
+        pickle.dump(pwdb, pwdb_file)
+
+def get_path():
+    return '/tmp/pwdb.pkl'
+
+pwdb = read_pwdb()
 username, password = get_credentials()
 if authenticate(username, password, pwdb):
     print('Match!')
