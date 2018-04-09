@@ -10,13 +10,15 @@ CHARS = string.ascii_letters + string.digits + string.punctuation
 
 def get_credentials():
     '''Prompt the user for a username and password, then
-    return the username (string) and password (string) in a tuple'''
+    return the username (string) and password (string) in a tuple xD'''
 
     username = input('Enter your username: ')
     password = getpass.getpass('Enter your password: ')
     return (username, password)
 
 def authenticate(username, pass_text, pwdb):
+    ''' docstring
+    '''
     if username in pwdb:
         salt = pwdb[username][1]
         if pwhash(pass_text, salt) == pwdb[username][0]:
